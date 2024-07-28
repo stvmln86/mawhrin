@@ -15,7 +15,6 @@ var MockData = map[string]string{
 	"alpha.extn": join(
 		".init 2000-01-02",
 		".edit 2000-01-03",
-		".tags foo, bar",
 		"Alpha.",
 	),
 
