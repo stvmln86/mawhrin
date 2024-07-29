@@ -35,8 +35,8 @@ func TestName(t *testing.T) {
 
 func TestPath(t *testing.T) {
 	// success
-	path := Path("/././path")
-	assert.Equal(t, "/path", path)
+	orig := Path("/././path")
+	assert.Equal(t, "/path", orig)
 }
 
 func TestTime(t *testing.T) {

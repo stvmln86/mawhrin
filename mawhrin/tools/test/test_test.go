@@ -3,15 +3,7 @@ package test
 import (
 	"errors"
 	"testing"
-
-	"github.com/stretchr/testify/assert"
 )
-
-func TestJoin(t *testing.T) {
-	// success
-	body := join("alpha", "bravo")
-	assert.Equal(t, "alpha\nbravo\n", body)
-}
 
 func TestAssertDire(t *testing.T) {
 	// setup

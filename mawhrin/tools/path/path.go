@@ -11,13 +11,13 @@ import (
 // Glob returns a sorted slice of all paths in a directory matching an extension.
 func Glob(dire, extn string) ([]string, error) {
 	glob := filepath.Join(dire, "*"+extn)
-	paths, err := filepath.Glob(glob)
+	origs, err := filepath.Glob(glob)
 	if err != nil {
 		return nil, fmt.Errorf("cannot list directory %q", dire)
 	}
 
-	slices.Sort(paths)
-	return paths, nil
+	slices.Sort(origs)
+	return origs, nil
 }
 
 // Join returns a joined path from a directory, name and extension.
@@ -26,7 +26,7 @@ func Join(dire, name, extn string) string {
 }
 
 // Name returns a path's base name without the extension.
-func Name(path string) string {
-	base := filepath.Base(path)
+func Name(orig string) string {
+	base := filepath.Base(orig)
 	return strings.SplitN(base, ".", 2)[0]
 }

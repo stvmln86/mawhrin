@@ -29,8 +29,8 @@ func Name(name string) string {
 }
 
 // Path returns a clean file path.
-func Path(path string) string {
-	return filepath.Clean(path)
+func Path(orig string) string {
+	return filepath.Clean(orig)
 }
 
 // Time returns a Time object from an ISO 8601 date string.

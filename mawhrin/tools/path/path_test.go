@@ -13,18 +13,18 @@ func TestGlob(t *testing.T) {
 	dire := test.MockDire(t)
 
 	// success
-	paths, err := Glob(dire, ".extn")
+	origs, err := Glob(dire, ".extn")
 	assert.Equal(t, []string{
 		filepath.Join(dire, "alpha.extn"),
 		filepath.Join(dire, "bravo.extn"),
-	}, paths)
+	}, origs)
 	assert.NoError(t, err)
 }
 
 func TestJoin(t *testing.T) {
 	// success
-	path := Join("/dire", "name", ".extn")
-	assert.Equal(t, "/dire/name.extn", path)
+	dest := Join("/dire", "name", ".extn")
+	assert.Equal(t, "/dire/name.extn", dest)
 }
 
 func TestName(t *testing.T) {

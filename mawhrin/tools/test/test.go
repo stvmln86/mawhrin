@@ -4,7 +4,6 @@ package test
 import (
 	"os"
 	"path/filepath"
-	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -12,21 +11,9 @@ import (
 
 // MockData is a base:body map of mock note files.
 var MockData = map[string]string{
-	"alpha.extn": join(
-		".init 2000-01-02",
-		".edit 2000-01-03",
-		"Alpha.",
-	),
-
-	"bravo.extn": join(
-		".nope nope",
-		"Bravo.",
-	),
-}
-
-// join returns a string slice as a newline-separated string.
-func join(lines ...string) string {
-	return strings.Join(lines, "\n") + "\n"
+	"alpha.extn":    "Alpha.\n",
+	"bravo.extn":    "Bravo.\n",
+	"charlie.trash": "Charlie.\n",
 }
 
 // AssertDire asserts the files in a directory are equal to a base:body map.
