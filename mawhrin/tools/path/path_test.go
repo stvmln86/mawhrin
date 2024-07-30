@@ -8,6 +8,18 @@ import (
 	"github.com/stvmln86/mawhrin/mawhrin/tools/test"
 )
 
+func TestDire(t *testing.T) {
+	// success
+	dire := Dire("/dire/name.extn")
+	assert.Equal(t, "/dire", dire)
+}
+
+func TestExtn(t *testing.T) {
+	// success
+	extn := Extn("/dire/name.extn")
+	assert.Equal(t, ".extn", extn)
+}
+
 func TestGlob(t *testing.T) {
 	// setup
 	dire := test.MockDire(t)
@@ -25,6 +37,16 @@ func TestJoin(t *testing.T) {
 	// success
 	dest := Join("/dire", "name", ".extn")
 	assert.Equal(t, "/dire/name.extn", dest)
+}
+
+func TestMatch(t *testing.T) {
+	// success - true
+	ok := Match("/dire/name.exnt", "NAME")
+	assert.True(t, ok)
+
+	// success - false
+	ok = Match("/dire/name.exnt", "NOPE")
+	assert.False(t, ok)
 }
 
 func TestName(t *testing.T) {
