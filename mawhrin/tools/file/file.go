@@ -5,8 +5,9 @@ import (
 	"errors"
 	"fmt"
 	"os"
-	"path/filepath"
 	"strings"
+
+	"github.com/stvmln86/mawhrin/mawhrin/tools/path"
 )
 
 // Create creates a new file populated from a string.
@@ -22,14 +23,15 @@ func Create(dest, body string, mode os.FileMode) error {
 	return nil
 }
 
-// Delete renames a file to the ".trash" extension.
+// Delete moves a file to the ".trash" extension.
 func Delete(orig string) error {
 	if !Exists(orig) {
 		return fmt.Errorf("cannot delete file %q - does not exist", orig)
 	}
 
-	extn := filepath.Ext(orig)
-	dest := strings.Replace(orig, extn, ".trash", 1)
+	dire := path.Dire(orig)
+	name := path.Name(orig)
+	dest := path.Join(dire, name, ".trash")
 	if err := os.Rename(orig, dest); err != nil {
 		return fmt.Errorf("cannot delete file %q - %w", orig, err)
 	}
@@ -55,6 +57,38 @@ func Read(orig string) (string, error) {
 	}
 
 	return string(bytes), nil
+}
+
+// Rename moves a file to a new name.
+func Rename(orig, name string) error {
+	if !Exists(orig) {
+		return fmt.Errorf("cannot rename file %q - does not exist", orig)
+	}
+
+	dire := path.Dire(orig)
+	extn := path.Extn(orig)
+	dest := path.Join(dire, name, extn)
+	if err := os.Rename(orig, dest); err != nil {
+		return fmt.Errorf("cannot rename file %q - %w", orig, err)
+	}
+
+	return nil
+}
+
+// Search returns true if a file's body contains a substring.
+func Search(orig, term string) (bool, error) {
+	if !Exists(orig) {
+		return false, fmt.Errorf("cannot search file %q - does not exist", orig)
+	}
+
+	bytes, err := os.ReadFile(orig)
+	if err != nil {
+		return false, fmt.Errorf("cannot read file %q - %w", orig, err)
+	}
+
+	term = strings.ToLower(term)
+	body := strings.ToLower(string(bytes))
+	return strings.Contains(body, term), nil
 }
 
 // Update overwrites an existing file with a string.

@@ -69,6 +69,37 @@ func TestRead(t *testing.T) {
 	test.AssertErr(t, err, "cannot read file .* - does not exist")
 }
 
+func TestRename(t *testing.T) {
+	// setup
+	orig := test.MockFile(t, "alpha.extn")
+	dest := strings.Replace(orig, "alpha", "rename", 1)
+
+	// success
+	err := Rename(orig, "rename")
+	assert.NoFileExists(t, orig)
+	assert.FileExists(t, dest)
+	assert.NoError(t, err)
+
+	// failure - does not exist
+	err = Rename(orig, "rename")
+	test.AssertErr(t, err, "cannot rename file .* - does not exist")
+}
+
+func TestSearch(t *testing.T) {
+	// setup
+	orig := test.MockFile(t, "alpha.extn")
+
+	// success - true
+	ok, err := Search(orig, "ALPHA")
+	assert.True(t, ok)
+	assert.NoError(t, err)
+
+	// success - false
+	ok, err = Search(orig, "NOPE")
+	assert.False(t, ok)
+	assert.NoError(t, err)
+}
+
 func TestUpdate(t *testing.T) {
 	// setup
 	orig := test.MockFile(t, "alpha.extn")
