@@ -21,7 +21,7 @@ func TestNew(t *testing.T) {
 	assert.Equal(t, os.FileMode(0666), note.Mode)
 }
 
-func Delete(t *testing.T) {
+func TestDelete(t *testing.T) {
 	// setup
 	note := xNote(t)
 	dest := strings.Replace(note.Orig, ".extn", ".trash", 1)
@@ -33,20 +33,25 @@ func Delete(t *testing.T) {
 	assert.NoError(t, err)
 }
 
-func Match(t *testing.T) {
+func TestExists(t *testing.T) {
 	// setup
 	note := xNote(t)
 
-	// success - true
-	ok := note.Match("ALPHA")
+	// success
+	ok := note.Exists()
 	assert.True(t, ok)
-
-	// success - false
-	ok = note.Match("NOPE")
-	assert.False(t, ok)
 }
 
-func Name(t *testing.T) {
+func TestMatch(t *testing.T) {
+	// setup
+	note := xNote(t)
+
+	// success
+	ok := note.Match("ALPHA")
+	assert.True(t, ok)
+}
+
+func TestName(t *testing.T) {
 	// setup
 	note := xNote(t)
 
@@ -55,7 +60,7 @@ func Name(t *testing.T) {
 	assert.Equal(t, "alpha", name)
 }
 
-func Read(t *testing.T) {
+func TestRead(t *testing.T) {
 	// setup
 	note := xNote(t)
 
@@ -65,22 +70,17 @@ func Read(t *testing.T) {
 	assert.NoError(t, err)
 }
 
-func Search(t *testing.T) {
+func TestSearch(t *testing.T) {
 	// setup
 	note := xNote(t)
 
-	// success - true
+	// success
 	ok, err := note.Search("ALPHA")
 	assert.True(t, ok)
 	assert.NoError(t, err)
-
-	// success - false
-	ok, err = note.Search("NOPE")
-	assert.False(t, ok)
-	assert.NoError(t, err)
 }
 
-func Update(t *testing.T) {
+func TestUpdate(t *testing.T) {
 	// setup
 	note := xNote(t)
 

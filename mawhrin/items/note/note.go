@@ -25,6 +25,11 @@ func (n *Note) Delete() error {
 	return file.Delete(n.Orig)
 }
 
+// Exists returns true if the Note exists.
+func (n *Note) Exists() bool {
+	return file.Exists(n.Orig)
+}
+
 // Match returns true if the Note's name contains a substring.
 func (n *Note) Match(term string) bool {
 	return path.Match(n.Orig, term)
@@ -48,5 +53,6 @@ func (n *Note) Search(term string) (bool, error) {
 
 // Update overwrites the Note's body with a string.
 func (n *Note) Update(body string) error {
-	return file.Update(n.Orig, neat.Body(body), n.Mode)
+	body = neat.Body(body)
+	return file.Update(n.Orig, body, n.Mode)
 }
