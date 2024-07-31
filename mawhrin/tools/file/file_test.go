@@ -14,12 +14,12 @@ func TestCreate(t *testing.T) {
 	dest := filepath.Join(t.TempDir(), "create.extn")
 
 	// success
-	err := Create(dest, "Body.\n", 0666)
-	test.AssertFile(t, dest, "Body.\n")
+	err := Create(dest, "Create.\n", 0666)
+	test.AssertFile(t, dest, "Create.\n")
 	assert.NoError(t, err)
 
 	// failure - already exists
-	err = Create(dest, "Body.\n", 0666)
+	err = Create(dest, "Create.\n", 0666)
 	test.AssertErr(t, err, "cannot create file .* - already exists")
 }
 
@@ -106,11 +106,11 @@ func TestUpdate(t *testing.T) {
 	nope := filepath.Join(t.TempDir(), "create.extn")
 
 	// success
-	err := Update(orig, "Body.\n", 0666)
-	test.AssertFile(t, orig, "Body.\n")
+	err := Update(orig, "Update.\n", 0666)
+	test.AssertFile(t, orig, "Update.\n")
 	assert.NoError(t, err)
 
 	// failure - does not exist
-	err = Update(nope, "Body.\n", 0666)
+	err = Update(nope, "Update.\n", 0666)
 	test.AssertErr(t, err, "cannot update file .* - does not exist")
 }

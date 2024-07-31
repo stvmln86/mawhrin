@@ -23,7 +23,7 @@ func Create(dest, body string, mode os.FileMode) error {
 	return nil
 }
 
-// Delete moves a file to the ".trash" extension.
+// Delete moves an existing file to the ".trash" extension.
 func Delete(orig string) error {
 	if !Exists(orig) {
 		return fmt.Errorf("cannot delete file %q - does not exist", orig)
@@ -45,7 +45,7 @@ func Exists(orig string) bool {
 	return !errors.Is(err, os.ErrNotExist)
 }
 
-// Read returns a file's body as a string.
+// Read returns an existing file's body as a string.
 func Read(orig string) (string, error) {
 	if !Exists(orig) {
 		return "", fmt.Errorf("cannot read file %q - does not exist", orig)
@@ -59,7 +59,7 @@ func Read(orig string) (string, error) {
 	return string(bytes), nil
 }
 
-// Rename moves a file to a new name.
+// Rename moves an existing file to a new name.
 func Rename(orig, name string) error {
 	if !Exists(orig) {
 		return fmt.Errorf("cannot rename file %q - does not exist", orig)
@@ -75,7 +75,7 @@ func Rename(orig, name string) error {
 	return nil
 }
 
-// Search returns true if a file's body contains a substring.
+// Search returns true if an existing file's body contains a substring.
 func Search(orig, term string) (bool, error) {
 	if !Exists(orig) {
 		return false, fmt.Errorf("cannot search file %q - does not exist", orig)
@@ -91,7 +91,7 @@ func Search(orig, term string) (bool, error) {
 	return strings.Contains(body, term), nil
 }
 
-// Update overwrites an existing file with a string.
+// Update overwrites an existing file's body with a string.
 func Update(orig, body string, mode os.FileMode) error {
 	if !Exists(orig) {
 		return fmt.Errorf("cannot update file %q - does not exist", orig)

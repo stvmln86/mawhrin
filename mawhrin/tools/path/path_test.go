@@ -41,11 +41,11 @@ func TestJoin(t *testing.T) {
 
 func TestMatch(t *testing.T) {
 	// success - true
-	ok := Match("/dire/name.exnt", "NAME")
+	ok := Match("/dire/name.extn", "NAME")
 	assert.True(t, ok)
 
 	// success - false
-	ok = Match("/dire/name.exnt", "NOPE")
+	ok = Match("/dire/name.extn", "NOPE")
 	assert.False(t, ok)
 }
 
