@@ -10,7 +10,7 @@ import (
 	"github.com/stvmln86/mawhrin/mawhrin/tools/path"
 )
 
-// Create creates a new file populated from a string.
+// Create creates a new file containing a string.
 func Create(dest, body string, mode os.FileMode) error {
 	if Exists(dest) {
 		return fmt.Errorf("cannot create file %q - already exists", dest)
@@ -43,6 +43,15 @@ func Delete(orig string) error {
 func Exists(orig string) bool {
 	_, err := os.Stat(orig)
 	return !errors.Is(err, os.ErrNotExist)
+}
+
+// Get returns an existing file or directory.
+func Get(orig string) (string, error) {
+	if !Exists(orig) {
+		return "", fmt.Errorf("cannot find file %q - does not exist", orig)
+	}
+
+	return orig, nil
 }
 
 // Read returns an existing file's body as a string.

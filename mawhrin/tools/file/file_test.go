@@ -42,21 +42,37 @@ func TestDelete(t *testing.T) {
 func TestExists(t *testing.T) {
 	// setup
 	orig := test.MockFile(t, "alpha.extn")
-	nope := filepath.Join(t.TempDir(), "create.extn")
+	nope := filepath.Join(t.TempDir(), "nope.extn")
 
 	// success - true
 	ok := Exists(orig)
 	assert.True(t, ok)
 
-	// success - nope
+	// success - false
 	ok = Exists(nope)
 	assert.False(t, ok)
+}
+
+func TestGet(t *testing.T) {
+	// setup
+	orig := test.MockFile(t, "alpha.extn")
+	nope := filepath.Join(t.TempDir(), "nope.extn")
+
+	// success
+	dest, err := Get(orig)
+	assert.Equal(t, orig, dest)
+	assert.NoError(t, err)
+
+	// failure - does not exist
+	dest, err = Get(nope)
+	assert.Empty(t, dest)
+	test.AssertErr(t, err, "cannot find file .* - does not exist")
 }
 
 func TestRead(t *testing.T) {
 	// setup
 	orig := test.MockFile(t, "alpha.extn")
-	nope := filepath.Join(t.TempDir(), "create.extn")
+	nope := filepath.Join(t.TempDir(), "nope.extn")
 
 	// success
 	body, err := Read(orig)
@@ -103,7 +119,7 @@ func TestSearch(t *testing.T) {
 func TestUpdate(t *testing.T) {
 	// setup
 	orig := test.MockFile(t, "alpha.extn")
-	nope := filepath.Join(t.TempDir(), "create.extn")
+	nope := filepath.Join(t.TempDir(), "nope.extn")
 
 	// success
 	err := Update(orig, "Update.\n", 0666)
