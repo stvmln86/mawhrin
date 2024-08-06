@@ -48,7 +48,7 @@ func Exists(orig string) bool {
 // Get returns an existing file or directory.
 func Get(orig string) (string, error) {
 	if !Exists(orig) {
-		return "", fmt.Errorf("cannot find file %q - does not exist", orig)
+		return "", fmt.Errorf("cannot get file %q - does not exist", orig)
 	}
 
 	return orig, nil

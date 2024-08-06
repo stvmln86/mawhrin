@@ -16,6 +16,11 @@ func TestGetEnv(t *testing.T) {
 	evar, err := GetEnv("ENV")
 	assert.Equal(t, "VALUE", evar)
 	assert.NoError(t, err)
+
+	// failure - does not exist
+	evar, err = GetEnv("NOPE")
+	assert.Empty(t, evar)
+	test.AssertErr(t, err, `environment variable "NOPE" does not exist`)
 }
 
 func TestParse(t *testing.T) {

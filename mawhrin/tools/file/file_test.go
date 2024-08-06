@@ -66,7 +66,7 @@ func TestGet(t *testing.T) {
 	// failure - does not exist
 	dest, err = Get(nope)
 	assert.Empty(t, dest)
-	test.AssertErr(t, err, "cannot find file .* - does not exist")
+	test.AssertErr(t, err, "cannot get file .* - does not exist")
 }
 
 func TestRead(t *testing.T) {

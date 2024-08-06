@@ -23,7 +23,7 @@ func Glob(dire, extn string) ([]string, error) {
 	glob := filepath.Join(dire, "*"+extn)
 	origs, err := filepath.Glob(glob)
 	if err != nil {
-		return nil, fmt.Errorf("cannot list directory %q", dire)
+		return nil, fmt.Errorf("cannot list directory %q - %w", dire, err)
 	}
 
 	slices.Sort(origs)
