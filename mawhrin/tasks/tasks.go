@@ -29,7 +29,7 @@ type NewTask func(*book.Book) (Task, error)
 
 // Tasks is a slice of existing Tasks.
 var Tasks = map[string]NewTask{
-	// "list": NewListTask,
+	"list": NewListTask,
 }
 
 // Run executes an existing Task from an argument slice.
