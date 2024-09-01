@@ -12,28 +12,15 @@ import (
 	"github.com/stvmln86/mawhrin/mawhrin/tools/test"
 )
 
-type MockTask struct{ Book *book.Book }
+var MockTask = New(
+	"mock PARAMETER",
+	"Mock task.",
 
-func NewMockTask(book *book.Book) (Task, error) {
-	return &MockTask{book}, nil
-}
-
-func (t *MockTask) Name() string {
-	return "mock"
-}
-
-func (t *MockTask) Help() string {
-	return "Mock task."
-}
-
-func (t *MockTask) Paras() []string {
-	return []string{"PARAMETER"}
-}
-
-func (t *MockTask) Run(w io.Writer, amap map[string]string) error {
-	fmt.Fprintf(w, "PARAMETER=%s", amap["PARAMETER"])
-	return nil
-}
+	func(w io.Writer, book *book.Book, amap map[string]string) error {
+		fmt.Fprintf(w, "PARAMETER=%s", amap["PARAMETER"])
+		return nil
+	},
+)
 
 func runTask(t *testing.T, cargs string) (*bytes.Buffer, error) {
 	w := bytes.NewBuffer(nil)
@@ -42,9 +29,17 @@ func runTask(t *testing.T, cargs string) (*bytes.Buffer, error) {
 	return w, Run(w, book, strings.Split(cargs, " "))
 }
 
+func TestNew(t *testing.T) {
+	// success
+	assert.Equal(t, "mock", MockTask.Name)
+	assert.Equal(t, []string{"PARAMETER"}, MockTask.Paras)
+	assert.Equal(t, "Mock task.", MockTask.Help)
+	assert.NotNil(t, MockTask.Func)
+}
+
 func TestRun(t *testing.T) {
 	// setup
-	Tasks["mock"] = NewMockTask
+	Tasks["mock"] = MockTask
 
 	// success
 	w, err := runTask(t, "mock argument")
@@ -54,5 +49,5 @@ func TestRun(t *testing.T) {
 	// failure
 	w, err = runTask(t, "nope argument")
 	assert.Empty(t, w.String())
-	test.AssertErr(t, err, `command "nope" does not exist`)
+	test.AssertErr(t, err, `task "nope" does not exist`)
 }

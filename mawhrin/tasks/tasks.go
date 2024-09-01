@@ -4,51 +4,46 @@ package tasks
 import (
 	"fmt"
 	"io"
+	"strings"
 
 	"github.com/stvmln86/mawhrin/mawhrin/items/book"
 	"github.com/stvmln86/mawhrin/mawhrin/tools/clui"
 )
 
 // Task is a user-facing command-line function.
-type Task interface {
-	// Name returns the Task's name.
-	Name() string
-
-	// Help returns the Task's help string.
-	Help() string
-
-	// Paras returns the Task's argument parameters.
-	Paras() []string
-
-	// Run executes the Task.
-	Run(io.Writer, map[string]string) error
+type Task struct {
+	Name  string
+	Paras []string
+	Help  string
+	Func  TaskFunc
 }
 
-// NewTask returns a new initialised Task.
-type NewTask func(*book.Book) (Task, error)
+// TaskFunc is the underlying function of a Task.
+type TaskFunc func(io.Writer, *book.Book, map[string]string) error
+
+// New returns a new initialised Task.
+func New(lede, help string, tfun TaskFunc) *Task {
+	name, paras, _ := strings.Cut(lede, " ")
+	return &Task{name, strings.Fields(paras), help, tfun}
+}
 
 // Tasks is a slice of existing Tasks.
-var Tasks = map[string]NewTask{
-	"list": NewListTask,
+var Tasks = map[string]*Task{
+	"list": ListTask,
 }
 
 // Run executes an existing Task from an argument slice.
 func Run(w io.Writer, book *book.Book, cargs []string) error {
 	name, cargs := clui.Split(cargs)
-	tfun, ok := Tasks[name]
+	task, ok := Tasks[name]
 	if !ok {
-		return fmt.Errorf("command %q does not exist", name)
+		return fmt.Errorf("task %q does not exist", name)
 	}
 
-	task, err := tfun(book)
+	amap, err := clui.Parse(task.Paras, cargs)
 	if err != nil {
 		return err
 	}
 
-	amap, err := clui.Parse(task.Paras(), cargs)
-	if err != nil {
-		return err
-	}
-
-	return task.Run(w, amap)
+	return task.Func(w, book, amap)
 }
