@@ -1,26 +1,16 @@
-# MAWHRIN
+# Mawhrin
 
-**Mawhrin** is a command-line note file manager, written in [Go 1.22][go] by [Stephen Malone][sm].
+**Mawhrin** is a command-line note file manager, written in [Python 3.12][py] by [Stephen Malone][sm].
 
 ## Installation
 
-You can install Mawhrin using your Go tools...
+You can install Mawhrin using Pip...
 
 ```
-go get github.com/stvmln86/mawhrin
+pip install mawhrin
 ```
 
 ... or download the [latest release][rl] for your platform.
-
-## Configuration
-
-Mawhrin will automatically create a database file at one of three locations, depending on how your environment variables are set:
-
-Variable                | Path
------------------------ | ----
-`MAWHRIN_DB`            | `$MAWHRIN_DB`
-`XDG_CONFIG_HOME`       | `$XDG_CONFIG_HOME/mawhrin/mawhrin.db`
-`HOME` or `USERPROFILE` | `$HOME/.mawhrin`
 
 ## Commands
 
@@ -52,7 +42,7 @@ Delete `NOTE`, if it exists.
 
 Please submit all bug reports and feature requests to the [issue tracker][is], thank you.
 
-[go]: https://golang.org/doc/go1.22
 [is]: https://github.com/stvmln86/mawhrin/issues
 [rl]: https://github.com/stvmln86/mawhrin/releases/latest
 [sm]: https://github.com/stvmln86
+[py]: https://www.python.org/downloads/release/python-3120/
