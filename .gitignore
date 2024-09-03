@@ -1,2 +1,9 @@
-# macOS junk
+# macOS
 .DS_Store
+
+# Python
+*.py[cod]
+.mypy_cache
+.pytest_cache
+.venv
+__pycache__
