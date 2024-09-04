@@ -3,6 +3,7 @@ Tests for 'mawhrin.tools.file'.
 """
 
 import os.path
+
 from mawhrin.tools import file
 
 

@@ -7,12 +7,12 @@ from mawhrin.tools import path
 
 def test_dire():
     # success
-    assert path.dire("/dire/slug.extn") == "/dire"
+    assert path.dire("/dire/name.extn") == "/dire"
 
 
 def test_extn():
     # success
-    assert path.extn("/dire/slug.extn") == ".extn"
+    assert path.extn("/dire/name.extn") == ".extn"
 
 
 def test_glob(dire):
@@ -25,15 +25,15 @@ def test_glob(dire):
 
 def test_join():
     # success
-    assert path.join("/dire", "slug", ".extn") == "/dire/slug.extn"
+    assert path.join("/dire", "name", ".extn") == "/dire/name.extn"
 
 
 def test_match():
     # success
-    assert path.match("/dire/slug.extn", "SLUG")
-    assert not path.match("/dire/slug.extn", "NOPE")
+    assert path.match("/dire/name.extn", "NAME")
+    assert not path.match("/dire/name.extn", "NOPE")
 
 
-def test_slug():
+def test_name():
     # success
-    assert path.slug("/dire/slug.extn") == "slug"
+    assert path.name("/dire/name.extn") == "name"

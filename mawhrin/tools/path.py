@@ -33,23 +33,23 @@ def glob(dire: str, extn: str) -> Iterator[str]:
     yield from glob_.iglob(path)
 
 
-def join(dire: str, slug: str, extn: str) -> str:
+def join(dire: str, name: str, extn: str) -> str:
     """
-    Return a joined filepath from a directory, slug and extension.
+    Return a joined filepath from a directory, name and extension.
     """
 
-    return os.path.join(dire, slug + extn)
+    return os.path.join(dire, name + extn)
 
 
 def match(path: str, text: str) -> bool:
     """
-    Return True if a path's slug contains a case-insensitive substring.
+    Return True if a path's name contains a case-insensitive substring.
     """
 
-    return text.casefold() in slug(path).casefold()
+    return text.casefold() in name(path).casefold()
 
 
-def slug(path: str) -> str:
+def name(path: str) -> str:
     """
     Return a path's base name without the extension.
     """

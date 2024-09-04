@@ -18,3 +18,8 @@ def test_extn():
 def test_name():
     # success
     assert data.name("\tNAME123!!!\n") == "name123"
+
+
+def test_path():
+    # success
+    assert data.path("\t/dire/./name.extn\n") == "/dire/name.extn"

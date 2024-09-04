@@ -3,6 +3,7 @@ Filesystem I/O functions.
 """
 
 import os.path
+
 from mawhrin import tools
 
 
@@ -12,8 +13,8 @@ def delete(path: str):
     """
 
     dire = tools.path.dire(path)
-    slug = tools.path.slug(path)
-    dest = tools.path.join(dire, slug, ".trash")
+    name = tools.path.name(path)
+    dest = tools.path.join(dire, name, ".trash")
     os.rename(path, dest)
 
 
@@ -30,21 +31,21 @@ def exists(path: str, *, dire: bool = False) -> bool:
 
 def read(path: str) -> str:
     """
-    Return the body of a file as a string.
+    Return a file's body as a string.
     """
 
     with open(path, "r", encoding="utf-8") as fobj:
         return fobj.read()
 
 
-def rename(path: str, slug: str):
+def rename(path: str, name: str):
     """
     Rename a file to a new name with the same directory and extension.
     """
 
     dire = tools.path.dire(path)
     extn = tools.path.extn(path)
-    dest = tools.path.join(dire, slug, extn)
+    dest = tools.path.join(dire, name, extn)
     os.rename(path, dest)
 
 
@@ -58,7 +59,7 @@ def search(path: str, text: str) -> bool:
 
 def write(path: str, body: str):
     """
-    Write a new or existing file with a string.
+    Overwrite a new or existing file's body with a string.
     """
 
     with open(path, "w", encoding="utf-8") as fobj:
