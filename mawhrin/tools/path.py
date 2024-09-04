@@ -15,6 +15,15 @@ def dire(path: str) -> str:
     return os.path.dirname(path)
 
 
+def extn(path: str) -> str:
+    """
+    Return a path's file extension, with a leading dot.
+    """
+
+    base = os.path.basename(path)
+    return os.path.splitext(base)[-1]
+
+
 def glob(dire: str, extn: str) -> Iterator[str]:
     """
     Yield all paths in a directory matching an extension.

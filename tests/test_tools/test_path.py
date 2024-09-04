@@ -10,6 +10,11 @@ def test_dire():
     assert path.dire("/dire/slug.extn") == "/dire"
 
 
+def test_extn():
+    # success
+    assert path.extn("/dire/slug.extn") == ".extn"
+
+
 def test_glob(dire):
     # success
     assert set(path.glob(dire, ".extn")) == {
