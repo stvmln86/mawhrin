@@ -3,6 +3,9 @@ Global unit-testing fixturs.
 """
 
 import pytest
+from click.testing import CliRunner
+
+from mawhrin.comms.base import group
 
 MOCK_FILES = {
     "alpha.extn": "Alpha.\n",
@@ -32,3 +35,17 @@ def path(tmp_path):
     path = tmp_path.joinpath("alpha.extn")
     path.write_text(MOCK_FILES["alpha.extn"])
     return str(path)
+
+
+@pytest.fixture(scope="function")
+def run(dire):
+    """
+    Return a function that runs a command in the Click base group and returns the result.
+    """
+
+    def run(*args):
+        envs = {"MAWHRIN_DIR": dire, "MAWHRIN_EXT": ".extn"}
+        clir = CliRunner(env=envs)
+        return clir.invoke(group, args)
+
+    return run
