@@ -37,8 +37,5 @@ line-length = 88
 venvPath = "."
 venv = ".venv"
 
-[tool.setuptools]
-packages = ["mawhrin"]
-
 [tool.setuptools.dynamic]
 version = { attr = "mawhrin.VERSION_NUMS" }
