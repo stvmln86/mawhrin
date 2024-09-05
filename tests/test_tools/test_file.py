@@ -21,11 +21,9 @@ def test_exists(path):
     # setup
     dire = os.path.dirname(path)
 
-    # success - True
+    # success
     assert file.exists(path)
     assert file.exists(dire, dire=True)
-
-    # success - False
     assert not file.exists("/nope")
     assert not file.exists("/nope", dire=True)
 

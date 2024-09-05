@@ -17,10 +17,10 @@ def test_extn():
 
 def test_glob(dire):
     # success
-    assert set(path.glob(dire, ".extn")) == {
+    assert list(path.glob(dire, ".extn")) == [
         dire + "/alpha.extn",
         dire + "/bravo.extn",
-    }
+    ]
 
 
 def test_join():

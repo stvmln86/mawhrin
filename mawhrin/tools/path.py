@@ -26,11 +26,11 @@ def extn(path: str) -> str:
 
 def glob(dire: str, extn: str) -> Iterator[str]:
     """
-    Yield all paths in a directory matching an extension.
+    Yield all paths in a directory matching an extension in alphabetical order.
     """
 
     path = os.path.join(dire, "*" + extn)
-    yield from glob_.iglob(path)
+    yield from sorted(glob_.glob(path))
 
 
 def join(dire: str, name: str, extn: str) -> str:

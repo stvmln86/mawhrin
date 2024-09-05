@@ -5,12 +5,11 @@ Class definition for 'Note'.
 from collections.abc import Iterator
 
 from mawhrin import tools
-from mawhrin.tools.file import read, rename
 
 
 class Note:
     """
-    A single plaintext note file in a Book.
+    A single plaintext note file in a directory.
     """
 
     def __init__(self, path: str):
@@ -67,7 +66,7 @@ class Note:
 
     def exists(self) -> bool:
         """
-        Return True if the Note exists.
+        Return True if the Note's file exists.
         """
 
         return tools.file.exists(self.path)
