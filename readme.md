@@ -1,6 +1,6 @@
 # Mawhrin
 
-**Mawhrin** is a command-line note file manager, written in [Python 3.12][py] by [Stephen Malone][sm].
+**Mawhrin** is a command-line note file manager, written in [Python 3.12][py] by [Stephen Malone][sm]. It provides a simple, universal command-line interface to your notes, no matter where you are in the terminal.
 
 ## Installation
 
@@ -18,25 +18,19 @@ pip install mawhrin
 
 List all notes, or notes with names containing `TEXT`.
 
-### `find [TEXT]`
+<details><summary>Example:</summary>
 
-List all notes, or notes with bodies containing `TEXT`.
+```
+$ mawhrin list
+alpha
+bravo
+charlie
 
-### `make NAME [BODY]`
+$ mawhrin list ch
+charlie
+```
 
-Create `NOTE`, either empty or containing `BODY`.
-
-### `show NOTE`
-
-Print `NOTE`'s body, if it exists.
-
-### `edit NOTE`
-
-Open `NOTE` in `$EDITOR` or `$VISUAL`.
-
-### `kill NOTE`
-
-Delete `NOTE`, if it exists.
+</details>
 
 ## Contributing
 
