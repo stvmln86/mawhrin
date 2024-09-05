@@ -2,8 +2,10 @@
 .DS_Store
 
 # Python
+*.egg-info
 *.py[cod]
 .mypy_cache
 .pytest_cache
 .venv
 __pycache__
+dist
