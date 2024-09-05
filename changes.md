@@ -3,7 +3,7 @@
 ## [Unreleased]
 - Nothing yet.
 
-## [0.1.1] - 2024-09-5
+## [0.1.1] - 2024-09-05
 ### Fixed
 - Build system now actually builds.
 
