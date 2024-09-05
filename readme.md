@@ -1,6 +1,6 @@
 # Mawhrin
 
-**Mawhrin** is a command-line note file manager, written in [Python 3.12][py] by [Stephen Malone][sm]. It provides a simple, universal command-line interface to your notes, no matter where you are in the terminal.
+**Mawhrin** is a command-line note file manager, written in [Python 3.11][py] by [Stephen Malone][sm]. It provides a simple, universal command-line interface to your notes, no matter where you are in the terminal.
 
 ## Installation
 
@@ -34,9 +34,9 @@ charlie
 
 ## Contributing
 
-Please submit all bug reports and feature requests to the [issue tracker][is], thank you.
+Please submit all bug reports and feature requests to the [issue tracker][is], thank you. For developers, run `pip install mawhrin[test]` to install testing dependencies.
 
 [is]: https://github.com/stvmln86/mawhrin/issues
 [rl]: https://github.com/stvmln86/mawhrin/releases/latest
 [sm]: https://github.com/stvmln86
-[py]: https://www.python.org/downloads/release/python-3120/
+[py]: https://www.python.org/downloads/release/python-3110/

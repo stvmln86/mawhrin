@@ -1,3 +1,44 @@
+[project]
+name = "mawhrin"
+authors = [{ name = "Stephen Malone" }]
+dependencies = ["click=>8.1"]
+description = "A command-line note file manager in Python."
+dynamic = ["version"]
+keywords = ["cli", "notes"]
+readme = "readme.md"
+requires-python = ">=3.11"
+
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: BSD License",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Utilities",
+]
+
+[project.optional-dependencies]
+test = ["mypy=>1.11", "pytest=>8.3", "pytest-mypy=>0.10"]
+
+[project.scripts]
+mawhrin = "mawhrin.__main__:main"
+
+[project.urls]
+Github = "https://github.com/stvmln86/mawhrin"
+Issues = "https://github.com/stvmln86/mawhrin/issues"
+Changes = "https://github.com/stvmln86/mawhrin/blob/main/changes.md"
+
+[build-system]
+requires = ["setuptools>=72.1"]
+build-backend = "setuptools.build_meta"
+
+[tool.black]
+line-length = 88
+
+[tool.setuptools.dynamic]
+version = { attr = "package.VERSION_NUMS" }
+
 [tool.pyright]
 venvPath = "."
 venv = ".venv"
