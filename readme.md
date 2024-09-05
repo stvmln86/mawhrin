@@ -12,6 +12,18 @@ pip install mawhrin
 
 ... or download the [latest release][rl] for your platform.
 
+## Configuration
+
+Mawhrin operates within a directory of plaintext note files you specify, using two environment variables:
+
+```bash
+# The directory your note files are in.
+export MAWHRIN_DIR = "$HOME/notes"
+
+# The extension your note files use (with a leading dot).
+export MAWHRIN_EXT = ".txt"
+```
+
 ## Commands
 
 ### `list [TEXT]`
