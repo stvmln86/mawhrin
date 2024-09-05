@@ -10,7 +10,7 @@ NAME_CHARS = ascii_lowercase + digits + "-_"
 
 def body(body: str) -> str:
     """
-    Return a trimmed note body string with an ending newline.
+    Return a trimmed file body string with an ending newline.
     """
 
     return body.strip() + "\n"
@@ -27,7 +27,7 @@ def extn(extn: str) -> str:
 
 def name(name: str) -> str:
     """
-    Return a trimmed lowercase alphanumeric note name string.
+    Return a trimmed lowercase alphanumeric file name string.
     """
 
     return "".join(char for char in name.strip().lower() if char in NAME_CHARS)

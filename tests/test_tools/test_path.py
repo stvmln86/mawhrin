@@ -2,6 +2,8 @@
 Tests for 'mawhrin.tools.path'.
 """
 
+import os.path
+
 from mawhrin.tools import path
 
 
@@ -18,8 +20,8 @@ def test_extn():
 def test_glob(dire):
     # success
     assert list(path.glob(dire, ".extn")) == [
-        dire + "/alpha.extn",
-        dire + "/bravo.extn",
+        os.path.join(dire, "/alpha.extn"),
+        os.path.join(dire, "/bravo.extn"),
     ]
 
 

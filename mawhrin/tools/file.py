@@ -1,5 +1,5 @@
 """
-Filesystem I/O functions.
+File system I/O and handling functions.
 """
 
 import os.path
@@ -9,7 +9,7 @@ from mawhrin import tools
 
 def delete(path: str):
     """
-    Delete a file by renaming it to the ".trash" extension.
+    Delete a file by renaming it to the '.trash' extension.
     """
 
     dire = tools.path.dire(path)

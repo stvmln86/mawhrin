@@ -1,5 +1,5 @@
 """
-Filepath derivation and manipulation functions.
+File path construction and manipulation functions.
 """
 
 import glob as glob_
@@ -30,12 +30,13 @@ def glob(dire: str, extn: str) -> Iterator[str]:
     """
 
     path = os.path.join(dire, "*" + extn)
-    yield from sorted(glob_.glob(path))
+    func = lambda path: os.path.basename(path)
+    yield from sorted(glob_.glob(path), key=func)
 
 
 def join(dire: str, name: str, extn: str) -> str:
     """
-    Return a joined filepath from a directory, name and extension.
+    Return a joined path from a directory, name and extension.
     """
 
     return os.path.join(dire, name + extn)
