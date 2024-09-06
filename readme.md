@@ -1,20 +1,20 @@
 # Mawhrin
 
-**Mawhrin** is a command-line note file manager, written in [Python 3.11][py] by [Stephen Malone][sm]. It provides a simple, universal command-line interface to your notes, no matter where you are in the terminal.
+**Mawhrin** is a command-line note file manager, written in [Python 3.11][py] by [Stephen Malone][sm]. If you have a directory of plaintext note files, Mawhrin can give you a neat & tidy command-line interface to access, edit and organise them.
 
 ## Installation
 
-You can install Mawhrin using Pip...
+You can install Mawhrin using Pip:
 
 ```
 pip install mawhrin
 ```
 
-... or download the [latest release][rl] for your platform.
+Or just download the [latest release][rl] for your platform.
 
 ## Configuration
 
-Mawhrin operates within a directory of plaintext note files you specify, using two environment variables:
+Mawhrin always operates within a directory of plaintext note files you specify with two environment variables:
 
 ```bash
 # The directory your note files are in.
@@ -24,22 +24,25 @@ export MAWHRIN_DIR = "$HOME/notes"
 export MAWHRIN_EXT = ".txt"
 ```
 
+That's it. That's all you need to do. 
+
 ## Commands
 
-### `list [TEXT]`
+### `list [NAME]`
 
-List all notes, or notes with names containing `TEXT`.
+List all notes, or notes matching NAME.
 
 <details><summary>Example:</summary>
 
 ```
 $ mawhrin list
-alpha
-bravo
-charlie
+books_to_read
+recipes_pasta
+recipes_vegan
+todos-2024
 
-$ mawhrin list ch
-charlie
+$ mawhrin list 2024
+todos-2024
 ```
 
 </details>
@@ -51,42 +54,44 @@ List all notes containing `TEXT`.
 <details><summary>Example:</summary>
 
 ```
-$ mawhrin find ch
-charlie
+$ mawhrin find broccoli 
+recipes_pasta
+recipes_vegan
 ```
 
 </details>
 
 ### `make NOTE [TEXT]`
 
-Create `NOTE` as an empty file, or containing `TEXT`.
+Create `NOTE` as an empty file or containing `TEXT`.
 
 <details><summary>Example:</summary>
 
 ```
-$ mawhrin make delta "Delta."
-$ mawhrin show delta
-Delta.
+$ mawhrin make todos_2025 "- [ ] Import old todos."
+$ mawhrin show todos_2025
+- [ ] Import old todos.
 ```
 
 </details>
 
-### `show [NAME]`
+### `show [NOTE]`
 
-Print the contents of the named note, if it exists.
+Print NOTE, if it exists.
 
 <details><summary>Example:</summary>
 
 ```
-$ mawhrin show alpha
-Alpha!
+$ mawhrin show books_to_read
+- [x] The Player of Games by Iain M. Banks
+...
 ```
 
 </details>
 
 ## Contributing
 
-Please submit all bug reports and feature requests to the [issue tracker][is], thank you. For developers, run `pip install mawhrin[test]` to install testing dependencies.
+Please submit all bug reports and feature requests to the [issue tracker][is], thank you.  
 
 [is]: https://github.com/stvmln86/mawhrin/issues
 [rl]: https://github.com/stvmln86/mawhrin/releases/latest
