@@ -44,6 +44,33 @@ charlie
 
 </details>
 
+### `find TEXT`
+
+List all notes containing `TEXT`.
+
+<details><summary>Example:</summary>
+
+```
+$ mawhrin find ch
+charlie
+```
+
+</details>
+
+### `make NOTE [TEXT]`
+
+Create `NOTE` as an empty file, or containing `TEXT`.
+
+<details><summary>Example:</summary>
+
+```
+$ mawhrin make delta "Delta."
+$ mawhrin show delta
+Delta.
+```
+
+</details>
+
 ### `show [NAME]`
 
 Print the contents of the named note, if it exists.

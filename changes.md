@@ -2,7 +2,7 @@
 
 ## [Unreleased]
 ### Added
-- New command: `show`.
+- New commands: `find`, `make`, `show`.
 
 ## [0.1.2] · 2024-09-05
 ### Added
