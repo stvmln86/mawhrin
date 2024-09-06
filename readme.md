@@ -44,6 +44,19 @@ charlie
 
 </details>
 
+### `show [NAME]`
+
+Print the contents of the named note, if it exists.
+
+<details><summary>Example:</summary>
+
+```
+$ mawhrin show alpha
+Alpha!
+```
+
+</details>
+
 ## Contributing
 
 Please submit all bug reports and feature requests to the [issue tracker][is], thank you. For developers, run `pip install mawhrin[test]` to install testing dependencies.
