@@ -39,3 +39,7 @@ venv = ".venv"
 
 [tool.setuptools.dynamic]
 version = { attr = "mawhrin.VERSION_NUMS" }
+
+[tool.setuptools.packages.find]
+exclude = ["tests*"]
+include = ["mawhrin*"]
