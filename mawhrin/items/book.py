@@ -61,6 +61,15 @@ class Book:
 
         return f"Book({self.dire!r}, {self.extn!r})"
 
+    def create(self, name: str) -> Note:
+        """
+        Return a new or existing Note in the Book.
+        """
+
+        name = tools.data.name(name)
+        path = tools.path.join(self.dire, name, self.extn)
+        return Note(path)
+
     def exists(self) -> bool:
         """
         Return True if the Book's directory exists.
@@ -73,9 +82,5 @@ class Book:
         Return an existing Note in the Book, or None.
         """
 
-        name = tools.data.name(name)
-        path = tools.path.join(self.dire, name, self.extn)
-        if tools.file.exists(path):
-            return Note(path)
-        else:
-            return None
+        note = self.create(name)
+        return note if note.exists() else None
