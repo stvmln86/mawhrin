@@ -5,6 +5,7 @@ Click base group definition.
 import click
 from click import ClickException
 
+from mawhrin import VERSION_TEXT
 from mawhrin.items import Book
 
 SETTINGS = {
@@ -15,6 +16,7 @@ SETTINGS = {
 @click.group(name="mawhrin", context_settings=SETTINGS)
 @click.option("--dire", envvar="MAWHRIN_DIR", hidden=True)
 @click.option("--extn", envvar="MAWHRIN_EXT", hidden=True)
+@click.version_option("", "-v", "--version", message=VERSION_TEXT)
 @click.pass_context
 def group(ctx: click.Context, dire: str, extn: str):
     """
