@@ -20,8 +20,8 @@ def test_extn():
 def test_glob(dire):
     # success
     assert list(path.glob(dire, ".extn")) == [
-        os.path.join(dire, "/alpha.extn"),
-        os.path.join(dire, "/bravo.extn"),
+        os.path.join(dire, "alpha.extn"),
+        os.path.join(dire, "bravo.extn"),
     ]
 
 

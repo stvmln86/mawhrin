@@ -83,7 +83,7 @@ class Note:
         Return the Note's body as a string.
         """
 
-        return tools.file.read(self.path)
+        return tools.data.body(tools.file.read(self.path))
 
     def rename(self, name: str):
         """
