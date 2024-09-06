@@ -35,10 +35,10 @@ def test_read(path):
 
 def test_rename(path):
     # setup
-    dest = path.replace("alpha", "rename")
+    dest = path.replace("alpha", "delta")
 
     # success
-    file.rename(path, "rename")
+    file.rename(path, "delta")
     assert not os.path.isfile(path)
     assert os.path.isfile(dest)
 

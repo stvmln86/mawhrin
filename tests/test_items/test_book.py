@@ -57,8 +57,8 @@ def test_repr(book):
 
 def test_create(book):
     # success
-    note = book.create("create")
-    assert note.path == os.path.join(book.dire, "create.extn")
+    note = book.create("delta")
+    assert note.path == os.path.join(book.dire, "delta.extn")
 
 
 def test_exists(book):

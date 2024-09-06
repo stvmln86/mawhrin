@@ -16,5 +16,5 @@ def mock(book):
 
 def test_group(run):
     # success
-    rslt = run("mock")
+    _, rslt = run("mock")
     assert rslt.output == "alpha\nbravo\n"

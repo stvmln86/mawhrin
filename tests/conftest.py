@@ -40,12 +40,13 @@ def path(tmp_path):
 @pytest.fixture(scope="function")
 def run(dire):
     """
-    Return a function that runs a command in the Click base group and returns the result.
+    Return a function that runs a command in the Click base group and returns the test
+    directory and result.
     """
 
     def run(*args):
         envs = {"MAWHRIN_DIR": dire, "MAWHRIN_EXT": ".extn"}
         clir = CliRunner(env=envs)
-        return clir.invoke(group, args)
+        return dire, clir.invoke(group, args)
 
     return run

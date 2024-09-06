@@ -72,10 +72,10 @@ def test_read(note):
 
 def test_rename(note):
     # setup
-    dest = note.path.replace("alpha", "rename")
+    dest = note.path.replace("alpha", "delta")
 
     # success
-    note.rename("rename")
+    note.rename("delta")
     assert os.path.isfile(dest)
     assert not os.path.isfile(note.path)
 
