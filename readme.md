@@ -2,6 +2,7 @@
 
 [![](https://img.shields.io/pypi/v/mawhrin?style=flat-square)][pp]
 [![](https://img.shields.io/github/last-commit/stvmln86/mawhrin?style=flat-square)][ch]
+[![](https://img.shields.io/github/issues/stvmln86/mawhrin?style=flat-square)][is]
 [![](https://img.shields.io/pypi/l/mawhrin?style=flat-square)][li]
 [![](https://img.shields.io/pypi/pyversions/mawhrin?style=flat-square)][py]
 
@@ -19,7 +20,7 @@ Or just download the [latest release][rl] for your platform.
 
 ## Configuration
 
-Mawhrin always operates within a directory of plaintext note files you specify with two environment variables:
+Mawhrin always operates within a directory of plaintext note files you specify, using two environment variables:
 
 ```bash
 # The directory your note files are in.
@@ -33,66 +34,64 @@ That's it. That's all you need to do.
 
 ## Commands
 
-### `list [NAME]`
+### Basic syntax
 
-List all notes, or notes matching NAME.
+Your notes are always shown as lowercase names, e.g.: Mawhrin will show the note file `notes/foo.txt` as `foo`. The opposite is also true: if you ask Mawhrin to create the note `foo`, it will translate to `notes/foo.txt`. 
 
-<details><summary>Example:</summary>
+For command-line help, call Mawhrin or a command with the the `-h` or `--help` options. 
 
-```
+### List all notes
+
+Use `list` to see all your notes, or notes with names matching some text:
+
+```bash
 $ mawhrin list
 books_to_read
 recipes_pasta
 recipes_vegan
 todos-2024
 
-$ mawhrin list 2024
+$ mawhrin list "2024"
 todos-2024
 ```
 
-</details>
+- Matching uses case-insensitive substrings, so `TODO` will match `todos-2024`.
+- If no matches are found, Mawhrin will print nothing.
 
-### `find TEXT`
+### Search all notes
 
-List all notes containing `TEXT`.
+Use `find` to list notes containing some text:
 
-<details><summary>Example:</summary>
-
-```
-$ mawhrin find broccoli 
-recipes_pasta
+```bash
+$ mawhrin find "add the tofu"
 recipes_vegan
 ```
 
-</details>
+- Searching also uses case-insensitive substrings.
+- If no searches are found, Mawhrin will print nothing.
 
-### `make NOTE [TEXT]`
+### Create a note
 
-Create `NOTE` as an empty file or containing `TEXT`.
+Use `make` to create a new empty note, or a note containing some text:
 
-<details><summary>Example:</summary>
-
+```bash
+$ mawhrin make movies_to_watch
+# or to add text:
+$ mawhrin make movies_to_watch "- [ ] Contact"
 ```
-$ mawhrin make todos_2025 "- [ ] Import old todos."
-$ mawhrin show todos_2025
-- [ ] Import old todos.
-```
 
-</details>
+- If the note already exists, Mawhrin will print an error.
 
-### `show [NOTE]`
+### Print a note:
 
-Print NOTE, if it exists.
-
-<details><summary>Example:</summary>
+Use `show` to print the contents of a note, if it exists:
 
 ```
 $ mawhrin show books_to_read
 - [x] The Player of Games by Iain M. Banks
-...
 ```
 
-</details>
+- If the note doesn't exist, Mawhrin will print nothing.
 
 ## Contributing
 
