@@ -82,7 +82,7 @@ $ mawhrin make movies_to_watch "- [ ] Contact"
 
 - If the note already exists, Mawhrin will print an error.
 
-### Print a note:
+### Print a note
 
 Use `show` to print the contents of a note, if it exists:
 
