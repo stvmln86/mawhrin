@@ -3,6 +3,7 @@ Command definition for 'make'.
 """
 
 import click
+from click import ClickException
 
 from mawhrin.comms.base import group
 from mawhrin.items import Book
@@ -18,4 +19,7 @@ def make(book: Book, name: str, text: str):
     """
 
     note = book.create(name)
-    note.write(text if text else "")
+    if note.exists():
+        raise ClickException(f"note {note.name!r} already exists.")
+    else:
+        note.write(text)

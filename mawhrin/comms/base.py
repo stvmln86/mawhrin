@@ -24,9 +24,9 @@ def group(ctx: click.Context, dire: str, extn: str):
     """
 
     if not dire:
-        raise ClickException("environment variable 'MAWHRIN_DIR' is unset")
+        raise ClickException("environment variable 'MAWHRIN_DIR' is unset.")
 
     if not extn:
-        raise ClickException("environment variable 'MAWHRIN_EXT' is unset")
+        raise ClickException("environment variable 'MAWHRIN_EXT' is unset.")
 
     ctx.obj = Book(dire, extn)
