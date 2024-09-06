@@ -16,6 +16,5 @@ def show(book: Book, name: str):
     Print the contents of an existing note.
     """
 
-    note = book.get(name)
-    if note.exists():
+    if note := book.get(name):
         click.echo(note.read(), nl=False)

@@ -26,7 +26,7 @@ class Book:
         Return True if the Book contains a named Note.
         """
 
-        return self.get(name).exists()
+        return self.get(name) != None
 
     def __eq__(self, book: object) -> bool:
         """
@@ -37,17 +37,6 @@ class Book:
             return NotImplemented
         else:
             return self.dire == book.dire and self.extn == book.extn
-
-    def __getitem__(self, name: str) -> Note:
-        """
-        Return an existing Note in the Book by name.
-        """
-
-        note = self.get(name)
-        if note.exists():
-            return note
-        else:
-            raise KeyError(f"Note {note.name!r} does not exist")
 
     def __iter__(self) -> Iterator[Note]:
         """
@@ -62,7 +51,8 @@ class Book:
         Return the number of Notes in the Book.
         """
 
-        return len(list(tools.path.glob(self.dire, self.extn)))
+        iter = tools.path.glob(self.dire, self.extn)
+        return len(list(iter))
 
     def __repr__(self) -> str:
         """
@@ -78,10 +68,14 @@ class Book:
 
         return tools.file.exists(self.dire, dire=True)
 
-    def get(self, name: str) -> Note:
+    def get(self, name: str) -> Note | None:
         """
-        Return a new or existing Note in the Book.
+        Return an existing Note in the Book, or None.
         """
 
-        path = tools.path.join(self.dire, tools.data.name(name), self.extn)
-        return Note(path)
+        name = tools.data.name(name)
+        path = tools.path.join(self.dire, name, self.extn)
+        if tools.file.exists(path):
+            return Note(path)
+        else:
+            return None

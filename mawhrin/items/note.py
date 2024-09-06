@@ -83,14 +83,16 @@ class Note:
         Return the Note's body as a string.
         """
 
-        return tools.data.body(tools.file.read(self.path))
+        body = tools.file.read(self.path)
+        return tools.data.body(body)
 
     def rename(self, name: str):
         """
         Rename the Note to a new name with the same directory and extension.
         """
 
-        tools.file.rename(self.path, tools.data.name(name))
+        name = tools.data.name(name)
+        tools.file.rename(self.path, name)
 
     def search(self, text: str) -> bool:
         """
@@ -105,11 +107,13 @@ class Note:
         Return the Note's base name without the extension.
         """
 
-        return tools.data.name(tools.path.name(self.path))
+        name = tools.path.name(self.path)
+        return tools.data.name(name)
 
     def write(self, body: str):
         """
         Overwrite the Note's body with a string.
         """
 
-        tools.file.write(self.path, tools.data.body(body))
+        body = tools.data.body(body)
+        tools.file.write(self.path, body)

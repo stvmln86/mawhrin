@@ -34,17 +34,6 @@ def test_eq(book):
     assert book != object()
 
 
-def test_getitem(book):
-    # success
-    assert book["alpha"]
-
-    # error - KeyError
-    with pytest.raises(KeyError) as exc:
-        book["nope"]
-
-    assert exc.match("Note 'nope' does not exist")
-
-
 def test_iter(book):
     # success
     assert list(book) == [
@@ -72,6 +61,10 @@ def test_exists(book):
 
 
 def test_get(book):
-    # success
+    # success - Note exists
     note = book.get("alpha")
     assert note.path == os.path.join(book.dire, "alpha.extn")
+
+    # success - Note does not exist
+    note = book.get("nope")
+    assert note == None
