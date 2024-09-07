@@ -1,7 +1,8 @@
 # Changes
 
 ## [Unreleased]
-- Nothing yet.
+### Added
+- New command: `repl` (hidden).
 
 ## [0.2.0] · 2024-09-07
 ### Added
