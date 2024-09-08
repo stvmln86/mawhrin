@@ -30,15 +30,15 @@ export MAWHRIN_DIR = "$HOME/notes"
 export MAWHRIN_EXT = ".txt"
 ```
 
-That's it. That's all you need to do. 
+That's it. That's all you need to do.
 
 ## Commands
 
 ### Basic syntax
 
-Your notes are always shown as lowercase names, e.g.: Mawhrin will show the note file `notes/foo.txt` as `foo`. The opposite is also true: if you ask Mawhrin to create the note `foo`, it will translate to `notes/foo.txt`. 
+Your notes are always shown as lowercase names, e.g.: Mawhrin will show the note file `notes/foo.txt` as `foo`. The opposite is also true: if you ask Mawhrin to create the note `foo`, it will translate to `notes/foo.txt`.
 
-For command-line help, call Mawhrin or a command with the the `-h` or `--help` options. 
+For command-line help, call Mawhrin or a command with the the `-h` or `--help` options.
 
 ### List all notes
 
@@ -82,6 +82,16 @@ $ mawhrin make movies_to_watch "- [ ] Contact"
 
 - If the note already exists, Mawhrin will print an error.
 
+### Open a note
+
+Use `open` to open a new or existing note in your default editor:
+
+```bash
+$ mawhrin open todos-2024
+```
+
+- Your editor is determined by the environment variables `$EDITOR` or `$VISUAL`.
+
 ### Print a note
 
 Use `show` to print the contents of a note, if it exists:
@@ -95,7 +105,7 @@ $ mawhrin show books_to_read
 
 ## Contributing
 
-Please submit all bug reports and feature requests to the [issue tracker][is], thank you.  
+Please submit all bug reports and feature requests to the [issue tracker][is], thank you.
 
 [ch]: https://github.com/stvmln86/mawhrin/blob/main/changes.md
 [is]: https://github.com/stvmln86/mawhrin/issues
