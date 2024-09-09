@@ -8,4 +8,5 @@ VERSION_TEXT = f"Mawhrin version {VERSION_NUMS} ({VERSION_DATE})."
 
 from mawhrin import comms
 from mawhrin import items
+from mawhrin import tasks
 from mawhrin import tools
