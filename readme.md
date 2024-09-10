@@ -5,6 +5,8 @@
 [![](https://img.shields.io/github/issues/stvmln86/mawhrin?style=flat-square)][is]
 [![](https://img.shields.io/pypi/l/mawhrin?style=flat-square)][li]
 [![](https://img.shields.io/pypi/pyversions/mawhrin?style=flat-square)][py]
+[![](https://img.shields.io/badge/justforfunnoreally-dev-9ff)][ff]
+
 
 **Mawhrin** is a command-line note file manager, written in [Python 3.11][py] by [Stephen Malone][sm]. If you have a directory of plaintext note files, Mawhrin can give you a neat & tidy command-line interface to access, edit and organise them.
 
@@ -108,6 +110,7 @@ $ mawhrin show books_to_read
 Please submit all bug reports and feature requests to the [issue tracker][is], thank you.
 
 [ch]: https://github.com/stvmln86/mawhrin/blob/main/changes.md
+[ff]: https://justforfunnoreally.dev
 [is]: https://github.com/stvmln86/mawhrin/issues
 [li]: https://github.com/stvmln86/mawhrin/blob/main/license.md
 [rl]: https://github.com/stvmln86/mawhrin/releases/latest
